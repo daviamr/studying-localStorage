@@ -1,0 +1,22 @@
+/*default styles*/
+:root {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.6rem;
+}
+
+label {
+    display: block;
+}
+
+input {
+    margin-bottom: 16px;
+}
