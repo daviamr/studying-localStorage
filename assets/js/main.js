@@ -14,16 +14,25 @@ form.addEventListener('submit', (e) => {
     if (user.value.trim() === '' || email.value.trim() === '' || pass.value.trim() === '') {
         alert('Campos vazios, preencha corretamente.');
     } else {
-        createAccount();
+        const newUser = user.value; //Obtendo o valor do user.value
+        const userExists = dados.find((element) => { //Buscando dentro do array 'dados' se já existe algum usuário com o valor do newUser
+            return element.usuario === newUser //Buscando exatamente o mesmo valor(.usuario) do newUser
+        });
+        if (userExists) {
+            alert('Usuário já cadastrado!');
+        } else {
+            createAccount();
+        }
     }
 
-    user.value = ''
-    email.value = ''
-    pass.value = ''
+    user.value = '';
+    email.value = '';
+    pass.value = '';
 })
 
+
 function createAccount() {
-    const newId = dados.length;
+    const newId = dados.length; //Criando um id único para cada conta, através do length do array que contém as accounts
     const newUser = user.value;
     const newEmail = email.value;
     const newPass = pass.value;
@@ -39,17 +48,4 @@ function createAccount() {
     dados.push(newAccount);
     //Setando os itens da array dados no localStorage
     localStorage.setItem('accounts', JSON.stringify(dados));
-}
-
-pass.addEventListener('keyup', passValidate);
-passConfirm.addEventListener('keyup', passValidate);
-
-function passValidate() {
-    if (pass.value != passConfirm.value) {
-        pass.style.border = '1px solid #FF0000'
-        passConfirm.style.border = '1px solid #FF0000'
-    } else if (pass.value === passConfirm.value) {
-        pass.style.border = 'none'
-        passConfirm.style.border = 'none'
-    }
 }
