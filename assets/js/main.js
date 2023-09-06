@@ -53,8 +53,7 @@ function createAccount() {
     localStorage.setItem('accounts', JSON.stringify(dados));
 }
 
-function showAndUpdateElement(index) {
-    const element = dados[index];
+function showAndUpdateElement() {
     dados.forEach(element => { //Para cada elemento
         div.style.display = 'flex';
         if (dados.length > 0) { //Verificando se há elementos dentro do array 'dados'
@@ -64,7 +63,7 @@ function showAndUpdateElement(index) {
 }
 
 function createElement(element) {
-    const newElement = document.createElement('span')
+    const newElement = document.createElement('span');
     newElement.classList.add('style');
 
     newElement.innerHTML = 'Usuário: ' + element.usuario + '<br>E-mail: ' + element.email + '<br>Senha: ' + element.senha;
